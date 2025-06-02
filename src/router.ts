@@ -1,4 +1,5 @@
 import {Router} from 'express'
+import User from './models/User';
 
 const router=Router();
 
@@ -6,15 +7,16 @@ const router=Router();
 //     res.send('Ecomerce')
 //   });
  
-router.post('/auth/register',(req,res)=>{
+router.post('/auth/register',async (req,res)=>{
 console.log(req.body);//obtiene datos de formulario
 //res.send("hola desde register")//regresa respuesta
 console.log("hola desde register")
 
+await  User.create(req.body)
 
 });
- router.get('/acercade',(req,res)=>{
-
+ router.get('/GetAll',async(req,res)=>{
+// await User.find
 
 res.send("acercade");
 
